@@ -1,6 +1,6 @@
-# 🍔 OnlyFoods
+# 🍔 OnlyFood's
 
-A full-stack food delivery web application built with Java, Jakarta EE, and modern web technologies. OnlyFoods provides a seamless ordering experience with restaurant browsing, menu exploration, cart management, and order placement.
+A full-stack food delivery web application built with Java, Jakarta EE, and modern web technologies. OnlyFood's provides a seamless ordering experience with restaurant browsing, menu exploration, cart management, and order placement.
 
 ![OnlyFoods Banner](https://img.shields.io/badge/Java-Full--Stack-orange?style=for-the-badge&logo=java)
 ![Jakarta EE](https://img.shields.io/badge/Jakarta%20EE-10.1-blue?style=for-the-badge)
