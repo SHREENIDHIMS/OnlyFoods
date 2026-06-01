@@ -151,12 +151,14 @@
                  style="animation-delay: <%= cartIdx * 0.08 %>s;">
 
                 <div class="cart-item-img">
-                    <% if (item.getImagePath() != null && !item.getImagePath().isEmpty()) { %>
-                        <img src="<%= request.getContextPath() + "/" + item.getImagePath() %>"
-                             alt="<%= item.getItemName() %>">
+                    <% if (item.getImagePath() != null && !item.getImagePath().trim().isEmpty()) { %>
+                    <img src="<%= item.getImagePath() %>"
+                         alt="<%= item.getItemName() %>"
+                         loading="lazy"
+                         onerror="this.src='https://via.placeholder.com/300x300?text=Food';">
                     <% } else { %>
-                        <img src="<%= request.getContextPath() %>/images/default-food.jpg"
-                             alt="<%= item.getItemName() %>">
+                    <img src="https://via.placeholder.com/300x300?text=Food"
+                         alt="<%= item.getItemName() %>">
                     <% } %>
                 </div>
 
