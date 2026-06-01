@@ -1,422 +1,233 @@
-# 🍔 OnlyFood's
+<div align="center">
 
-A full-stack food delivery web application built with Java, Jakarta EE, and modern web technologies. OnlyFood's provides a seamless ordering experience with restaurant browsing, menu exploration, cart management, and order placement.
+<img src="src/main/webapp/images/logo.png" alt="OnlyFoods Logo" width="80" height="80" onerror="this.style.display='none'"/>
 
-![Java](https://img.shields.io/badge/Java-Full--Stack-orange?style=for-the-badge&logo=java)
-![Jakarta EE](https://img.shields.io/badge/Jakarta%20EE-10.1-blue?style=for-the-badge)
-![MySQL](https://img.shields.io/badge/MySQL-Database-blue?style=for-the-badge&logo=mysql)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+# 🍔 OnlyFoods
 
----
+### A full-stack food delivery web application built with Java, Jakarta EE & MySQL
 
-## 📸 Screenshots
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-onlyfoods--production.up.railway.app-orange?style=for-the-badge)](https://onlyfoods-production.up.railway.app)
+[![Java](https://img.shields.io/badge/Java-17-red?style=for-the-badge&logo=openjdk)](https://openjdk.org/projects/jdk/17/)
+[![Tomcat](https://img.shields.io/badge/Tomcat-10.1-yellow?style=for-the-badge&logo=apache-tomcat)](https://tomcat.apache.org/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?style=for-the-badge&logo=mysql)](https://www.mysql.com/)
+[![Maven](https://img.shields.io/badge/Maven-3.9-C71A36?style=for-the-badge&logo=apache-maven)](https://maven.apache.org/)
+[![Railway](https://img.shields.io/badge/Deployed%20on-Railway-0B0D0E?style=for-the-badge&logo=railway)](https://railway.app)
 
-> The app supports both **Light** ☀️ and **Dark** 🌙 themes, toggled via the icon in the top-right navigation bar.
-
----
-
-### 1. 🔐 Registration
-
-| ☀️ Light Theme | 🌙 Dark Theme |
-|:-:|:-:|
-| ![Register Light](screenshots/light/register.png) | ![Register Dark](screenshots/dark/register.png) |
-
-> Sign up with username, email, phone, address, and password — with a live password strength indicator.
+</div>
 
 ---
 
-### 2. 🔑 Login
+## 📌 Overview
 
-| ☀️ Light Theme | 🌙 Dark Theme |
-|:-:|:-:|
-| ![Login Light](screenshots/light/login.png) | ![Login Dark](screenshots/dark/login.png) |
+**OnlyFoods** is a Swiggy-inspired food delivery web application built from scratch using core Java enterprise technologies — no Spring, no frameworks, just raw Jakarta EE Servlets, JSP, and JDBC. Users can browse restaurants, explore menus, add items to a session-based cart, and place orders with delivery address management.
 
-> Secure sign-in with email and password.
+> 🟢 **Live at:** [onlyfoods-production.up.railway.app](https://onlyfoods-production.up.railway.app)
 
 ---
 
-### 3. 🏠 Home — All Restaurants
+## ✨ Features
 
-| ☀️ Light Theme | 🌙 Dark Theme |
-|:-:|:-:|
-| ![Home Light](screenshots/light/home.png) | ![Home Dark](screenshots/dark/home.png) |
-
-> Browse 20+ restaurants with ratings, delivery time, and discount offers.
-
----
-
-### 4. 🍛 Home — Filtered by Cuisine
-
-| ☀️ Light Theme | 🌙 Dark Theme |
-|:-:|:-:|
-| ![Home Filtered Light](screenshots/light/home_filtered.png) | ![Home Filtered Dark](screenshots/dark/home_filtered.png) |
-
-> Filter restaurants by cuisine using the horizontal category carousel (e.g., South Indian).
-
----
-
-### 5. 🍽️ Menu Page
-
-| ☀️ Light Theme | 🌙 Dark Theme |
-|:-:|:-:|
-| ![Menu Light](screenshots/light/menu.png) | ![Menu Dark](screenshots/dark/menu.png) |
-
-> View menu items with prices, availability badges, and add-to-cart controls with quantity stepper.
-
----
-
-### 6. 🛒 Cart — With Items
-
-| ☀️ Light Theme | 🌙 Dark Theme |
-|:-:|:-:|
-| ![Cart Items Light](screenshots/light/cart_items.png) | ![Cart Items Dark](screenshots/dark/cart_items.png) |
-
-> Review cart with itemized pricing — subtotal, delivery fee (₹40), and GST (5%).
-
----
-
-### 7. 🗑️ Cart — Empty State
-
-| ☀️ Light Theme | 🌙 Dark Theme |
-|:-:|:-:|
-| ![Cart Empty Light](screenshots/light/cart_empty.png) | ![Cart Empty Dark](screenshots/dark/cart_empty.png) |
-
-> Clean empty state with a prompt to browse restaurants.
-
----
-
-### 8. 💳 Checkout
-
-| ☀️ Light Theme | 🌙 Dark Theme |
-|:-:|:-:|
-| ![Checkout Light](screenshots/light/checkout.png) | ![Checkout Dark](screenshots/dark/checkout.png) |
-
-> Select delivery address (Home / Work / New) and payment method — COD, UPI, Card, or Net Banking.
-
----
-
-### 9. ✅ Order Confirmed
-
-| ☀️ Light Theme | 🌙 Dark Theme |
-|:-:|:-:|
-| ![Order Confirmed Light](screenshots/light/order_confirmed.png) | ![Order Confirmed Dark](screenshots/dark/order_confirmed.png) |
-
-> Order confirmation with live tracking stages and estimated delivery countdown.
-
----
-
-### 10. 👤 Profile
-
-| ☀️ Light Theme | 🌙 Dark Theme |
-|:-:|:-:|
-| ![Profile Light](screenshots/light/profile.png) | ![Profile Dark](screenshots/dark/profile.png) |
-
-> View order history, saved addresses, OnlyFood's Cash, favourites, and account settings.
-
----
-
-## 🚀 Features
-
-### User Authentication
-- Secure user registration with BCrypt password hashing
-- Live password strength indicator during registration
-- Login/logout functionality with session management
-- Password validation and security best practices
-
-### Restaurant & Menu Browsing
-- Browse 20+ restaurants with ratings, cuisine types, and delivery times
-- Dynamic menu display with item availability badges
-- Horizontal category carousel for cuisine-based filtering
-- Search bar for restaurants and cuisines
-- Discount/offer badges on restaurant cards
-
-### Shopping Cart
-- Add/remove items from cart with quantity controls
-- Confirmation dialog before clearing entire cart
-- Empty state with browse prompt
-- Persistent cart storage in session
-- Real-time price calculations (subtotal + delivery fee + GST)
-
-### Checkout & Payments
-- Delivery address selection (Home / Work / New address)
-- Multiple payment methods: Cash on Delivery, UPI (GPay/PhonePe/Paytm), Credit/Debit Card, Net Banking
-- Itemized order summary with GST (5%) and delivery fee breakdown
-
-### Order Management
-- Comprehensive checkout flow
-- Order confirmation page with full order details
-- Live tracking stages: Confirmed → Preparing → Out for Delivery → Delivered
-- Estimated delivery countdown timer
-- Order history accessible from profile
-
-### User Profile
-- Order history with status badges (Pending / Delivered)
-- OnlyFood's Cash / cashback section
-- Saved addresses management (set default, add new, remove)
-- Favourites for restaurants and menu items
-- Account settings: change password, update phone number
-- Silver Member tier badge + Verified badge
-
-### UI/UX
-- Responsive design for all screen sizes
-- **Dark / Light theme toggle** (sun/moon icon in navbar)
-- Modern, Swiggy-inspired interface
-- Consistent design system with custom fonts (Syne, DM Sans)
-- Orange accent color (`#ff5200`) throughout
-- Toast notifications for cart actions (e.g., "Idli Vada added!")
+| Feature | Details |
+|---|---|
+| 🔐 **Authentication** | Register, Login, Logout with BCrypt password hashing |
+| 🏪 **Restaurant Browsing** | Browse all active restaurants with ratings, cuisine type & delivery time |
+| 🍽️ **Menu Exploration** | View full menus per restaurant, filtered by category |
+| 🛒 **Cart Management** | Add/remove items, session-based cart, real-time quantity updates |
+| 📦 **Order Placement** | Checkout with saved delivery address, payment mode selection |
+| 📋 **Order History** | View all past orders with detailed item breakdowns |
+| 👤 **User Profile** | Manage personal details and delivery address |
+| 🌙 **Dark/Light Theme** | Toggle between dark and light UI modes |
+| 📱 **Responsive UI** | Mobile-friendly Swiggy-inspired design |
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Backend
-- **Java 17+**
-- **Jakarta EE (Servlets, JSP)**
-- **Apache Tomcat 10.1**
-- **MySQL 8.0+**
-- **JDBC** for database connectivity
-- **BCrypt** for password hashing
+- **Java 17** — Core language
+- **Jakarta EE Servlets** — Request handling (no Spring MVC)
+- **JDBC** — Raw database access with PreparedStatements
+- **BCrypt (jBCrypt 0.4)** — Secure password hashing
+- **Apache Tomcat 10.1** — Servlet container
 
 ### Frontend
-- **JSP (JavaServer Pages)**
-- **CSS3** (Custom stylesheets)
-- **Vanilla JavaScript**
-- **Google Fonts** (Syne, DM Sans)
+- **JSP (Jakarta Server Pages)** — Server-side rendering
+- **JSTL** — JSP tag library
+- **CSS3** — Custom Swiggy-inspired styling
+- **Vanilla JavaScript** — Cart interactions, theme toggle
 
-### Architecture
-- **MVC Pattern**
-- **DAO Pattern** for data access
-- **Servlet-based routing**
+### Database
+- **MySQL 8.0** — Relational database
+- **5 core tables:** `user`, `restaurant`, `menu`, `orders`, `orderitems`
+
+### DevOps
+- **Maven 3.9** — Build & dependency management
+- **Docker** — Multi-stage containerization (Maven build → Tomcat runtime)
+- **Railway** — Cloud hosting (App + MySQL)
 
 ---
 
-## 📁 Project Structure
+## 🗂️ Project Structure
 
 ```
 OnlyFoods/
-├── src/
-│   └── main/
-│       ├── java/
-│       │   └── com/
-│       │       └── OnlyFoods/
-│       │           ├── model/          # Entity classes
-│       │           ├── dao/            # DAO interfaces
-│       │           ├── daoimp/         # DAO implementations
-│       │           ├── Servlet/        # Servlet controllers
-│       │           └── util/           # Utility classes
-│       └── webapp/
-│           ├── WEB-INF/
-│           │   └── web.xml             # Deployment descriptor
-│           ├── css/
-│           │   └── onlyfoods.css       # Main stylesheet
-│           ├── images/                 # Static images
-│           └── *.jsp                   # JSP pages
+├── src/main/
+│   ├── java/com/OnlyFoods/
+│   │   ├── model/          # POJOs — User, Restaurant, Menu, Order, OrderItem, CartItem
+│   │   ├── dao/            # DAO interfaces
+│   │   ├── daoimp/         # JDBC implementations
+│   │   ├── Servlet/        # 11 Servlets (Register, Login, Restaurant, Menu, Cart, etc.)
+│   │   └── util/           # DBConnector, PasswordUtil
+│   └── webapp/
+│       ├── WEB-INF/
+│       │   └── web.xml     # Servlet mappings, session config
+│       ├── *.jsp           # Login, Register, Home, Menu, Cart, Checkout, Orders, Profile
+│       ├── css/            # Stylesheets
+│       └── images/         # Restaurant & food images
 ├── database/
-│   └── schema.sql                      # Database schema
-├── screenshots/
-│   ├── light/                          # Light theme screenshots
-│   │   ├── register.png
-│   │   ├── login.png
-│   │   ├── home.png
-│   │   ├── home_filtered.png
-│   │   ├── menu.png
-│   │   ├── cart_items.png
-│   │   ├── cart_empty.png
-│   │   ├── checkout.png
-│   │   ├── order_confirmed.png
-│   │   └── profile.png
-│   └── dark/                           # Dark theme screenshots
-│       ├── register.png
-│       ├── login.png
-│       ├── home.png
-│       ├── home_filtered.png
-│       ├── menu.png
-│       ├── cart_items.png
-│       ├── cart_empty.png
-│       ├── checkout.png
-│       ├── order_confirmed.png
-│       └── profile.png
-└── README.md
-```
-
-## 📦 Package Structure
-
-```
-com.OnlyFoods
-├── model               # POJOs (User, Restaurant, Menu, Cartitem, etc.)
-├── dao                 # Data Access Object interfaces
-├── daoimp              # DAO implementations with JDBC
-├── Servlet             # Servlet controllers
-└── util                # Helper classes (DBConnector, PasswordUtil, etc.)
+│   └── schema.sql          # Full DB schema + sample data
+├── pom.xml                 # Maven build config
+└── Dockerfile              # Multi-stage Docker build
 ```
 
 ---
 
-## ⚙️ Installation & Setup
+## 🔌 API / Servlet Endpoints
 
-### Prerequisites
-- Java Development Kit (JDK) 17 or higher
-- Apache Tomcat 10.1+
-- MySQL 8.0+
-- Eclipse IDE / IntelliJ IDEA (optional)
-- Maven (optional, for dependency management)
-
-### Database Setup
-
-1. **Create Database**
-```sql
-CREATE DATABASE onlyfoods;
-USE onlyfoods;
-```
-
-2. **Run Schema Script**
-```sql
--- Execute the schema.sql file located in /database folder
-SOURCE /path/to/database/schema.sql;
-```
-
-3. **Configure Database Connection**
-
-Update the database credentials in `DBConnector.java`:
-```java
-private static final String URL = "jdbc:mysql://localhost:3306/onlyfoods";
-private static final String USER = "your_username";
-private static final String PASSWORD = "your_password";
-```
-
-### Application Setup
-
-1. **Clone the Repository**
-```bash
-git clone https://github.com/SHREENIDHIMS/OnlyFoods.git
-cd OnlyFoods
-```
-
-2. **Import Project**
-   - Open Eclipse / IntelliJ IDEA
-   - Import as existing project
-   - Configure build path with required JARs
-
-3. **Add Required JARs**
-   - MySQL Connector/J (JDBC Driver)
-   - BCrypt library
-   - Jakarta Servlet API
-   - JSTL (JavaServer Pages Standard Tag Library)
-
-4. **Configure Tomcat**
-   - Add project to Tomcat server
-   - Set context path to `/OnlyFoods`
-
-5. **Deploy & Run**
-   - Start Tomcat server
-   - Access application at: `http://localhost:8080/OnlyFoods`
-
----
-
-## 🎯 Usage
-
-### First Time Users
-1. Navigate to the registration page
-2. Create an account with username, email, phone, address, and password
-3. Log in with your credentials
-
-### Ordering Food
-1. Browse available restaurants on the home page
-2. Use cuisine filters or the search bar to narrow down restaurants
-3. Select a restaurant to view its menu
-4. Add items to cart using the `+ Add` button
-5. Review your cart and adjust quantities if needed
-6. Proceed to checkout
-7. Select delivery address and payment method
-8. Place order and track it live on the confirmation page
-
-### Theme Toggle
-- Click the 🌙 / ☀️ icon in the top-right navigation bar to switch themes
-- Preference is saved per session
+| Servlet | URL | Method | Description |
+|---|---|---|---|
+| RegisterServlet | `/register` | POST | Create new user account |
+| LoginServlet | `/login` | POST | Authenticate user |
+| LogoutServlet | `/logout` | GET | Invalidate session |
+| RestaurantServlet | `/RestaurantServlet` | GET | List all restaurants |
+| MenuServlet | `/MenuServlet` | GET | Get menu for a restaurant |
+| CartServlet | `/CartServlet` | GET/POST | Add/remove cart items |
+| CheckoutServlet | `/CheckoutServlet` | GET | Render checkout page |
+| PlaceOrderServlet | `/PlaceOrderServlet` | POST | Confirm and place order |
+| OrderHistoryServlet | `/orders` | GET | View all past orders |
+| OrderDetailsServlet | `/orderdetails` | GET | View single order details |
+| ProfileServlet | `/profile` | GET/POST | View/update profile |
 
 ---
 
 ## 🗄️ Database Schema
 
-### Key Tables
-- `user` — User authentication and profile data
-- `restaurant` — Restaurant information
-- `menu` — Menu items with pricing and availability
-- `cart` — Shopping cart items (session-based)
-- `orders` — Order history
-- `orderitems` — Individual items per order
-
-*Refer to `/database/schema.sql` for the complete schema.*
+```sql
+user        — userid, name, email, password, phone, address
+restaurant  — restaurantid, name, cuisinetype, deliverytime, address, rating
+menu        — menuid, restaurantid, itemname, description, price, category
+orders      — orderid, userid, restaurantid, totalamount, status, paymentmode
+orderitems  — orderitemid, orderid, menuid, itemname, quantity, price, subtotal
+```
 
 ---
 
-## 🎨 Design System
+## 🚀 Run Locally
 
-### Colors
-- **Primary Orange**: `#ff5200`
-- **Dark Theme**: Background `#1a1a1a`, Text `#ffffff`
-- **Light Theme**: Background `#f5f5f0`, Text `#000000`
+### Prerequisites
+- Java 17+
+- Maven 3.9+
+- MySQL 8.0+
 
-### Typography
-- **Display Font**: Syne (headings, brand name)
-- **Body Font**: DM Sans (body text, UI elements)
+### Steps
 
-### Components
-- Pure CSS theme toggle (checkbox sibling selector)
-- Responsive navigation bar with active route highlighting
-- Card-based restaurant and menu layouts
-- Horizontal scrolling cuisine carousels
-- Toast notifications for cart actions
-- Live password strength indicator on registration
+**1. Clone the repo**
+```bash
+git clone https://github.com/SHREENIDHIMS/OnlyFoods.git
+cd OnlyFoods
+```
+
+**2. Set up the database**
+```bash
+mysql -u root -p < database/schema.sql
+```
+
+**3. Set environment variables**
+```bash
+# Linux/Mac
+export DB_URL="jdbc:mysql://localhost:3306/onlyfoods?useSSL=false&serverTimezone=UTC"
+export DB_USER="root"
+export DB_PASS="yourpassword"
+
+# Windows CMD
+set DB_URL=jdbc:mysql://localhost:3306/onlyfoods?useSSL=false&serverTimezone=UTC
+set DB_USER=root
+set DB_PASS=yourpassword
+```
+
+**4. Build the WAR**
+```bash
+mvn clean package -DskipTests
+```
+
+**5. Deploy to Tomcat**
+
+Copy `target/OnlyFoods.war` to your Tomcat `webapps/` folder and start Tomcat.
+
+Or run with Docker:
+```bash
+docker build -t onlyfoods .
+docker run -p 8080:8080 \
+  -e DB_URL="jdbc:mysql://host.docker.internal:3306/onlyfoods?useSSL=false&serverTimezone=UTC" \
+  -e DB_USER="root" \
+  -e DB_PASS="yourpassword" \
+  onlyfoods
+```
+
+Open [http://localhost:8080](http://localhost:8080)
 
 ---
 
-## 🚧 Roadmap
+## ☁️ Deployment (Railway)
 
-- [ ] Payment gateway integration (Razorpay / Stripe)
-- [ ] Real-time order tracking with WebSockets
-- [ ] Restaurant partner dashboard
-- [ ] Review and rating system
-- [ ] Advanced search and filters
-- [ ] Push notifications
-- [ ] Mobile application
+This app is deployed on [Railway](https://railway.app) using Docker + Railway MySQL.
 
----
+**Environment variables required:**
 
-## 🤝 Contributing
+| Variable | Example |
+|---|---|
+| `DB_URL` | `jdbc:mysql://host:port/railway?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC` |
+| `DB_USER` | `root` |
+| `DB_PASS` | `your-password` |
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+The `Dockerfile` uses a **multi-stage build** — Maven compiles the WAR in Stage 1, and the WAR is deployed to a clean Tomcat 10.1 image in Stage 2.
 
 ---
 
-## 📝 License
+## 🔒 Security
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+- Passwords hashed with **BCrypt** (never stored in plain text)
+- All DB queries use **PreparedStatements** (SQL injection-safe)
+- Session validation on every protected route
+- DB credentials loaded from **environment variables** (never hardcoded)
+
+---
+
+## 📸 Screenshots
+
+> _Register, login, browse restaurants, add to cart, and place an order._
+
+| Login | Home | Menu | Cart |
+|---|---|---|---|
+| ![Login](src/main/webapp/images/screenshots/login.png) | ![Home](src/main/webapp/images/screenshots/home.png) | ![Menu](src/main/webapp/images/screenshots/menu.png) | ![Cart](src/main/webapp/images/screenshots/cart.png) |
 
 ---
 
 ## 👨‍💻 Author
 
 **Shreenidhi M S**
-- GitHub: [@SHREENIDHIMS](https://github.com/SHREENIDHIMS)
-- LinkedIn: [Shreenidhi M S](https://www.linkedin.com/in/shreenidhi-m03/)
+- 📧 [nshreenidhi655@gmail.com](mailto:nshreenidhi655@gmail.com)
+- 🐙 [github.com/SHREENIDHIMS](https://github.com/SHREENIDHIMS)
+- 🌐 [Live Demo](https://onlyfoods-production.up.railway.app)
 
 ---
 
-## 🙏 Acknowledgments
+## 📄 License
 
-- Tap Academy for the internship opportunity
-- Swiggy for UI/UX inspiration
-- The Jakarta EE community
+This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-⭐ If you find this project helpful, please consider giving it a star!
-
-**Built with ❤️ using Java & Jakarta EE**
+<div align="center">
+  <sub>Built with ☕ Java and a lot of hunger 🍕</sub>
+</div>
