@@ -2,7 +2,8 @@ package com.OnlyFoods.daoimp;
 
 import com.OnlyFoods.dao.CategoryDAO;
 import com.OnlyFoods.model.Category;
-import com.OnlyFoods.util.DBConnection;
+import com.OnlyFoods.util.DBConnector;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     @Override
     public List<Category> getAllCategories() {
         List<Category> categories = new ArrayList<>();
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_ALL);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {

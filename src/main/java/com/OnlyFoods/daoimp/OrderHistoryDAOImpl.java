@@ -3,7 +3,7 @@ package com.OnlyFoods.daoimp;
 import com.OnlyFoods.dao.OrderHistoryDAO;
 import com.OnlyFoods.model.Order;
 import com.OnlyFoods.model.Orderitem;
-import com.OnlyFoods.util.DBConnection;
+import com.OnlyFoods.util.DBConnector;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class OrderHistoryDAOImpl implements OrderHistoryDAO {
     @Override
     public List<Order> getOrderHistoryByUserId(int userId) {
         List<Order> orders = new ArrayList<>();
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_HISTORY)) {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
@@ -73,7 +73,7 @@ public class OrderHistoryDAOImpl implements OrderHistoryDAO {
 
     @Override
     public Order getOrderDetailByOrderId(int orderId, int userId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_ORDER_DETAIL)) {
             ps.setInt(1, orderId);
             ps.setInt(2, userId);
@@ -93,7 +93,7 @@ public class OrderHistoryDAOImpl implements OrderHistoryDAO {
     @Override
     public List<Order> getRecentOrders(int userId, int limit) {
         List<Order> orders = new ArrayList<>();
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_RECENT)) {
             ps.setInt(1, userId);
             ps.setInt(2, limit);
@@ -112,7 +112,7 @@ public class OrderHistoryDAOImpl implements OrderHistoryDAO {
 
     private List<Orderitem> getItemsForOrder(int orderId) {
         List<Orderitem> items = new ArrayList<>();
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_ITEMS)) {
             ps.setInt(1, orderId);
             ResultSet rs = ps.executeQuery();

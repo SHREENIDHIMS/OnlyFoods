@@ -1,0 +1,18 @@
+/* Restaurant.css — OnlyFoods
+   All styles are now in onlyfoods.css (the shared design system).
+   This file is kept for backward compatibility only.
+   Make sure onlyfoods.css is deployed alongside this file.
+*/
+@import url("Onlyfoods.css");
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+
+.shimmer-card {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: 10px;
+  height: 120px;
+}

@@ -2,7 +2,7 @@ package com.OnlyFoods.daoimp;
 
 import com.OnlyFoods.dao.UserDAO;
 import com.OnlyFoods.model.User;
-import com.OnlyFoods.util.DBConnection;
+import com.OnlyFoods.util.DBConnector;
 
 import java.sql.*;
 
@@ -47,7 +47,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public int addUser(User user) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(INSERT_USER)) {
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());                               // BCrypt hash
@@ -71,7 +71,7 @@ public class UserDAOImpl implements UserDAO {
      */
     @Override
     public User getUserByEmailAndPassword(String email, String password) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_BY_EMAIL)) {
             ps.setString(1, email.toLowerCase());
             ResultSet rs = ps.executeQuery();
@@ -85,7 +85,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User getUserById(int userId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_BY_ID)) {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
@@ -99,7 +99,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean emailExists(String email) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(EMAIL_EXISTS)) {
             ps.setString(1, email.toLowerCase());
             return ps.executeQuery().next();
@@ -147,7 +147,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     private void executeUpdate(String sql, String methodName, StatementSetter setter) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
             setter.set(ps);
             ps.executeUpdate();

@@ -2,7 +2,7 @@ package com.OnlyFoods.daoimp;
 
 import com.OnlyFoods.dao.RestaurantDAO;
 import com.OnlyFoods.model.Restaurant;
-import com.OnlyFoods.util.DBConnection;
+import com.OnlyFoods.util.DBConnector;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
     @Override
     public List<Restaurant> getAllRestaurants() {
         List<Restaurant> list = new ArrayList<>();
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_ALL);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
@@ -34,7 +34,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
     @Override
     public Restaurant getRestaurantById(int restaurantId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_BY_ID)) {
             ps.setInt(1, restaurantId);
             ResultSet rs = ps.executeQuery();

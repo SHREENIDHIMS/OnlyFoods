@@ -2,7 +2,7 @@ package com.OnlyFoods.daoimp;
 
 import com.OnlyFoods.dao.OrderitemDAO;
 import com.OnlyFoods.model.Orderitem;
-import com.OnlyFoods.util.DBConnection;
+import com.OnlyFoods.util.DBConnector;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class OrderitemDAOImpl implements OrderitemDAO {
     @Override
     public List<Orderitem> getItemsByOrderId(int orderId) {
         List<Orderitem> items = new ArrayList<>();
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_BY_ORDER)) {
             ps.setInt(1, orderId);
             ResultSet rs = ps.executeQuery();
@@ -46,7 +46,7 @@ public class OrderitemDAOImpl implements OrderitemDAO {
 
     @Override
     public int addOrderItem(Orderitem item) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt   (1, item.getOrderId());
             ps.setInt   (2, item.getMenuId());
@@ -66,7 +66,7 @@ public class OrderitemDAOImpl implements OrderitemDAO {
 
     @Override
     public boolean deleteItemsByOrderId(int orderId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(DELETE_BY_ORDER)) {
             ps.setInt(1, orderId);
             return ps.executeUpdate() >= 0;

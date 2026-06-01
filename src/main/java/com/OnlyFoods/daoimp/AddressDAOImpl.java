@@ -2,7 +2,7 @@ package com.OnlyFoods.daoimp;
 
 import com.OnlyFoods.dao.AddressDAO;
 import com.OnlyFoods.model.Address;
-import com.OnlyFoods.util.DBConnection;
+import com.OnlyFoods.util.DBConnector;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class AddressDAOImpl implements AddressDAO {
     @Override
     public List<Address> getAddressesByUserId(int userId) {
         List<Address> list = new ArrayList<>();
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_BY_USER)) {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
@@ -51,7 +51,7 @@ public class AddressDAOImpl implements AddressDAO {
 
     @Override
     public int addAddress(Address address) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt    (1, address.getUserId());
             ps.setString (2, address.getLabel());
@@ -71,7 +71,7 @@ public class AddressDAOImpl implements AddressDAO {
 
     @Override
     public boolean updateAddress(Address address) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(UPDATE)) {
             ps.setString (1, address.getLabel());
             ps.setString (2, address.getFullAddress());
@@ -88,7 +88,7 @@ public class AddressDAOImpl implements AddressDAO {
 
     @Override
     public boolean deleteAddress(int addressId, int userId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(DELETE)) {
             ps.setInt(1, addressId);
             ps.setInt(2, userId);
@@ -106,7 +106,7 @@ public class AddressDAOImpl implements AddressDAO {
      */
     @Override
     public boolean setDefault(int addressId, int userId) {
-        try (Connection con = DBConnection.getDBConnection()) {
+        try (Connection con = DBConnector.getConnection()) {
             con.setAutoCommit(false);
             try (PreparedStatement ps1 = con.prepareStatement(CLEAR_DEFAULT);
                  PreparedStatement ps2 = con.prepareStatement(SET_DEFAULT)) {
@@ -135,7 +135,7 @@ public class AddressDAOImpl implements AddressDAO {
      */
     @Override
     public void clearDefault(int userId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(CLEAR_DEFAULT)) {
             ps.setInt(1, userId);
             ps.executeUpdate();

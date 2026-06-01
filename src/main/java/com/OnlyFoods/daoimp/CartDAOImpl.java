@@ -3,18 +3,12 @@ package com.OnlyFoods.daoimp;
 import com.OnlyFoods.dao.CartDAO;
 import com.OnlyFoods.model.Cart;
 import com.OnlyFoods.model.Cartitem;
-import com.OnlyFoods.util.DBConnection;
+import com.OnlyFoods.util.DBConnector;
 
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * CartDAOImpl — JDBC implementation of CartDAO.
- *
- * Every method opens its own connection via DBConnection.getDBConnection()
- * for consistency with the rest of the DAO layer.
- */
 public class CartDAOImpl implements CartDAO {
 
     // ── Queries ───────────────────────────────────────────────────
@@ -59,7 +53,7 @@ public class CartDAOImpl implements CartDAO {
 
     @Override
     public Cart getCartByUserId(int userId) throws SQLException {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(SELECT_CART_BY_USER)) {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
@@ -78,7 +72,7 @@ public class CartDAOImpl implements CartDAO {
         if (quantity <= 0) {
             return false;
         }
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement checkPs = con.prepareStatement(SELECT_ITEM_QTY)) {
             checkPs.setInt(1, cartId);
             checkPs.setInt(2, menuId);
@@ -90,7 +84,7 @@ public class CartDAOImpl implements CartDAO {
             }
         }
         // Item does not exist — insert
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(INSERT_ITEM)) {
             ps.setInt(1, cartId);
             ps.setInt(2, menuId);
@@ -108,7 +102,7 @@ public class CartDAOImpl implements CartDAO {
         if (quantity <= 0) {
             return removeItemFromCart(cartId, menuId);
         }
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(UPDATE_ITEM_QTY)) {
             ps.setInt(1, quantity);
             ps.setInt(2, cartId);
@@ -123,7 +117,7 @@ public class CartDAOImpl implements CartDAO {
 
     @Override
     public boolean removeItemFromCart(int cartId, int menuId) throws SQLException {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(DELETE_ITEM)) {
             ps.setInt(1, cartId);
             ps.setInt(2, menuId);
@@ -137,7 +131,7 @@ public class CartDAOImpl implements CartDAO {
 
     @Override
     public boolean clearCart(int cartId) throws SQLException {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(DELETE_ALL_ITEMS)) {
             ps.setInt(1, cartId);
             ps.executeUpdate();
@@ -148,7 +142,7 @@ public class CartDAOImpl implements CartDAO {
 
     @Override
     public int getCartItemCount(int cartId) throws SQLException {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(COUNT_ITEMS)) {
             ps.setInt(1, cartId);
             ResultSet rs = ps.executeQuery();
@@ -162,7 +156,7 @@ public class CartDAOImpl implements CartDAO {
     // ── Private helpers ───────────────────────────────────────────
 
     private Cart createCart(int userId) throws SQLException {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(INSERT_CART, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, userId);
             ps.executeUpdate();
@@ -180,7 +174,7 @@ public class CartDAOImpl implements CartDAO {
     /** Internal helper — fetches items using a fresh connection. */
     private Map<Integer, Cartitem> getCartItemsInternal(int cartId) throws SQLException {
         Map<Integer, Cartitem> items = new HashMap<>();
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(SELECT_CART_ITEMS)) {
             ps.setInt(1, cartId);
             ResultSet rs = ps.executeQuery();
@@ -202,7 +196,7 @@ public class CartDAOImpl implements CartDAO {
 
     /** Touch the cart's updated_at timestamp after any mutation. */
     private void touchCart(int cartId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(TOUCH_CART)) {
             ps.setInt(1, cartId);
             ps.executeUpdate();

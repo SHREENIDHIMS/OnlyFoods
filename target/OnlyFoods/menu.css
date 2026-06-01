@@ -1,0 +1,6 @@
+/* menu.css — OnlyFoods
+   All styles are now in onlyfoods.css (the shared design system).
+   This file is kept for backward compatibility only.
+   Make sure onlyfoods.css is deployed alongside this file.
+*/
+@import url("Onlyfoods.css");

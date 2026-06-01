@@ -2,7 +2,7 @@ package com.OnlyFoods.daoimp;
 
 import com.OnlyFoods.dao.FavouriteDAO;
 import com.OnlyFoods.model.Favourite;
-import com.OnlyFoods.util.DBConnection;
+import com.OnlyFoods.util.DBConnector;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class FavouriteDAOImpl implements FavouriteDAO {
     @Override
     public List<Favourite> getFavouriteRestaurants(int userId) {
         List<Favourite> list = new ArrayList<>();
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_FAV_RESTAURANTS)) {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
@@ -76,7 +76,7 @@ public class FavouriteDAOImpl implements FavouriteDAO {
 
     @Override
     public boolean addFavouriteRestaurant(int userId, int restaurantId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(ADD_FAV_RESTAURANT)) {
             ps.setInt(1, userId);
             ps.setInt(2, restaurantId);
@@ -90,7 +90,7 @@ public class FavouriteDAOImpl implements FavouriteDAO {
 
     @Override
     public boolean removeFavouriteRestaurant(int userId, int restaurantId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(REMOVE_FAV_RESTAURANT)) {
             ps.setInt(1, userId);
             ps.setInt(2, restaurantId);
@@ -104,7 +104,7 @@ public class FavouriteDAOImpl implements FavouriteDAO {
 
     @Override
     public boolean isRestaurantFavourited(int userId, int restaurantId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(IS_RESTAURANT_FAVED)) {
             ps.setInt(1, userId);
             ps.setInt(2, restaurantId);
@@ -121,7 +121,7 @@ public class FavouriteDAOImpl implements FavouriteDAO {
     @Override
     public List<Favourite> getFavouriteMenuItems(int userId) {
         List<Favourite> list = new ArrayList<>();
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_FAV_MENUS)) {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
@@ -144,7 +144,7 @@ public class FavouriteDAOImpl implements FavouriteDAO {
 
     @Override
     public boolean addFavouriteMenu(int userId, int menuId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(ADD_FAV_MENU)) {
             ps.setInt(1, userId);
             ps.setInt(2, menuId);
@@ -158,7 +158,7 @@ public class FavouriteDAOImpl implements FavouriteDAO {
 
     @Override
     public boolean removeFavouriteMenu(int userId, int menuId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(REMOVE_FAV_MENU)) {
             ps.setInt(1, userId);
             ps.setInt(2, menuId);
@@ -172,7 +172,7 @@ public class FavouriteDAOImpl implements FavouriteDAO {
 
     @Override
     public boolean isMenuFavourited(int userId, int menuId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(IS_MENU_FAVED)) {
             ps.setInt(1, userId);
             ps.setInt(2, menuId);

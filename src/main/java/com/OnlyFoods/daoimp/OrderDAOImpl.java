@@ -3,7 +3,8 @@ package com.OnlyFoods.daoimp;
 import com.OnlyFoods.dao.OrderDAO;
 import com.OnlyFoods.model.Order;
 import com.OnlyFoods.model.Orderitem;
-import com.OnlyFoods.util.DBConnection;
+
+import com.OnlyFoods.util.DBConnector;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public List<Order> getOrdersByUserId(int userId) {
         List<Order> orders = new ArrayList<>();
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_ORDERS_BY_USER)) {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
@@ -67,7 +68,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public Order getOrderById(int orderId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_ORDER_BY_ID)) {
             ps.setInt(1, orderId);
             ResultSet rs = ps.executeQuery();
@@ -85,7 +86,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public int placeOrder(Order order) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(PLACE_ORDER, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt   (1, order.getUserId());
             ps.setInt   (2, order.getRestaurantId());
@@ -106,7 +107,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public void addOrderItems(List<Orderitem> items) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(INSERT_ORDER_ITEM)) {
             for (Orderitem item : items) {
                 ps.setInt   (1, item.getOrderId());
@@ -124,7 +125,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public int countOrdersByUserId(int userId) {
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(COUNT_ORDERS_BY_USER)) {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
@@ -142,7 +143,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     private List<Orderitem> getItemsByOrderId(int orderId) {
         List<Orderitem> items = new ArrayList<>();
-        try (Connection con = DBConnection.getDBConnection();
+        try (Connection con = DBConnector.getConnection();
              PreparedStatement ps = con.prepareStatement(GET_ITEMS_BY_ORDER)) {
             ps.setInt(1, orderId);
             ResultSet rs = ps.executeQuery();
