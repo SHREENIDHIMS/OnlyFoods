@@ -144,6 +144,27 @@
             color: #1a9e3f; background: #e8f8ee;
             border-radius: 5px; padding: 3px 8px; margin-top: 6px;
         }
+
+        .card-img-wrap {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 14px 14px 0 0;
+            background: #f5f5f5;
+        }
+
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-img-wrap img {
+            transform: scale(1.05);
+        }
+
         .offer-icon { display: inline-block; font-size: 13px; transition: transform 0.05s linear; will-change: transform; }
     </style>
 </head>
@@ -266,9 +287,10 @@
                style="animation-delay: <%= idx * 80 %>ms;">
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="<%= request.getContextPath() + "/" + escapeHtml(r.getImagePath()) %>"
+                        <img src="<%= escapeHtml(r.getImagePath()) %>"
                              alt="<%= escapeHtml(r.getName()) %>"
-                             onerror="this.style.visibility='hidden'">
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/600x400?text=Restaurant+Image';">
                     </div>
                     <div class="card-content">
                         <h3><%= escapeHtml(r.getName()) %></h3>
