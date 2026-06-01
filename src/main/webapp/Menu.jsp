@@ -186,11 +186,12 @@ com.OnlyFoods.model.User user =
 
                 <div class="menu-card-img">
                     <img
-                        src="<%= (m.getImagePath() != null && !m.getImagePath().trim().isEmpty())
-                            ? request.getContextPath() + "/" + m.getImagePath()
-                            : request.getContextPath() + "/images/default-food.jpg" %>"
-                        alt="<%= escapeHtml(m.getItemName()) %>"
-                        onerror="this.src='<%= request.getContextPath() %>/images/default-food.jpg'">
+                            src="<%= (m.getImagePath() != null && !m.getImagePath().trim().isEmpty())
+        ? m.getImagePath()
+        : "https://via.placeholder.com/600x400?text=Food+Image" %>"
+                            alt="<%= escapeHtml(m.getItemName()) %>"
+                            loading="lazy"
+                            onerror="this.src='https://via.placeholder.com/600x400?text=Food+Image';">
                 </div>
 
                 <div class="menu-card-body">
