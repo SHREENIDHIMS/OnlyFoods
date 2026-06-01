@@ -1,0 +1,15 @@
+* [33mcc86523[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Docker OnlyFoods for Railway
+* [33m7b2f07f[m Add maven + docker deployment config
+* [33md2be9b9[m add image
+[31m|[m * [33m718355a[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Enhance README with new content and formatting
+[31m|[m * [33m7389005[m Add files via upload
+[31m|[m * [33m270dbec[m Create .gitkeep
+[31m|[m * [33m06dc06f[m Create .gitkeep
+[31m|[m * [33maad9abb[m Fix typo in project name in README
+[31m|[m * [33mc5ec6c3[m Add extensive entries to .gitignore file
+[31m|[m * [33me2b16cf[m Add files via upload
+[31m|[m * [33m7191e7f[m Add Changelog for OnlyFoods project
+[31m|[m * [33m10e86eb[m Create Contributing.md with contribution guidelines
+[31m|[m * [33m6e40ff7[m Rename SETUP· md to SETUP.md
+[31m|[m * [33m0ce8955[m Rename API  .md to API.md
+[31m|[m * [33mfa0bd3e[m Rename Api · md to API  .md

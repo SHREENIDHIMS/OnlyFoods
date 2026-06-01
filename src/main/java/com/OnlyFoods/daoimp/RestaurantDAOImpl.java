@@ -57,7 +57,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
         r.setCuisineType (rs.getString ("cuisineType"));
         r.setDeliveryTime(rs.getInt    ("deliveryTime"));
         r.setAddress     (rs.getString ("address"));
-        r.setAdminUserId (rs.getInt    ("adminUserId"));
+//        r.setAdminUserId (rs.getInt    ("adminUserId"));
         r.setRating      (rs.getDouble ("rating"));
         r.setActive      (rs.getBoolean("isActive"));
         r.setImagePath   (rs.getString ("imagePath"));
