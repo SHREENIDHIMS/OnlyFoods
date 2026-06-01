@@ -25,6 +25,24 @@
 
 ---
 
+## 📸 Screenshots
+
+> _Register, login, browse restaurants, add to cart, checkout, and track your orders._
+
+**Row 1 — Browsing & Ordering**
+
+| Login | Home | Menu | Cart |
+|---|---|---|---|
+| ![Login](src/main/webapp/images/screenshots/login.png) | ![Home](src/main/webapp/images/screenshots/home.png) | ![Menu](src/main/webapp/images/screenshots/menu.png) | ![Cart](src/main/webapp/images/screenshots/cart.png) |
+
+**Row 2 — Checkout & Account**
+
+| Checkout | Order Confirmation | Order History | Profile |
+|---|---|---|---|
+| ![Checkout](src/main/webapp/images/screenshots/checkout.png) | ![Ordered](src/main/webapp/images/screenshots/ordered.png) | ![Orders](src/main/webapp/images/screenshots/orders.png) | ![Profile](src/main/webapp/images/screenshots/profile.png) |
+
+---
+
 ## ✨ Features
 
 | Feature | Details |
@@ -201,17 +219,6 @@ The `Dockerfile` uses a **multi-stage build** — Maven compiles the WAR in Stag
 - Session validation on every protected route
 - DB credentials loaded from **environment variables** (never hardcoded)
 
----
-
-## 📸 Screenshots
-
-> _Register, login, browse restaurants, add to cart, and place an order._
-
-| Login | Home | Menu | Cart |
-|---|---|---|---|
-| ![Login](src/main/webapp/images/screenshots/login.png) | ![Home](src/main/webapp/images/screenshots/home.png) | ![Menu](src/main/webapp/images/screenshots/menu.png) | ![Cart](src/main/webapp/images/screenshots/cart.png) |
-
----
 
 ## 👨‍💻 Author
 
