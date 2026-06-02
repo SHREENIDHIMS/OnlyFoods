@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="src/main/webapp/images/logo.png" alt="OnlyFoods Logo" width="80" height="80" onerror="this.style.display='none'"/>
-
 # 🍔 OnlyFoods
 
 ### A full-stack food delivery web application built with Java, Jakarta EE & MySQL
